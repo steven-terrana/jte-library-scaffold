@@ -1,0 +1,12 @@
+site_name: My Library Documentation
+
+theme:
+  name: material
+
+repo_url: https://github.com/steven-terrana/jte-library-scaffold.git
+
+plugins:
+  - search:
+  - gen-files:
+      scripts:
+        - /docs/docs/copy_docs.py
