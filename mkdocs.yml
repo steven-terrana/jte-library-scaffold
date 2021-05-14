@@ -9,4 +9,9 @@ plugins:
   - search:
   - gen-files:
       scripts:
-        - /docs/docs/copy_docs.py
+        - /docs/resources/copy_docs.py
+
+extra:
+  version:
+    provider: mike
+    default: latest
