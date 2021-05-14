@@ -71,7 +71,10 @@ release version:
   -v ~/.gitconfig:/root/.gitconfig \
   -v ~/.git-credentials:/root/.git-credentials \
   --entrypoint mike \
-  {{image}} set-default latest
+  {{image}} set-default -p latest
+
+  # go back to main 
+  git checkout main
 
 delete-release version: 
   git push origin --delete release/{{version}}
