@@ -68,7 +68,7 @@ just test
 
 The gradle test report is published to `target/reports/tests/test/index.html`. 
 
-### Execute tests for a specific library
+### For a specific library
 
 To run tests for a specific library, `docker` for example, run:
 
@@ -76,7 +76,7 @@ To run tests for a specific library, `docker` for example, run:
 just test '*docker*'
 ```
 
-### Execute tests for a specific Specification file
+### For a specific Specification file
 
 To run tests for a specific Specification file, `test/docker/BuildSpec.groovy` for example, run:
 
