@@ -66,9 +66,20 @@ release version:
   --entrypoint mike \
   {{image}} deploy --push --update-aliases {{version}} latest
 
-    docker run --rm \
+  docker run --rm \
   -v $(pwd):/docs \
   -v ~/.gitconfig:/root/.gitconfig \
   -v ~/.git-credentials:/root/.git-credentials \
   --entrypoint mike \
   {{image}} set-default latest
+
+delete-release version: 
+  git push origin --delete release/{{version}}
+  git tag -d {{version}}
+  git push --delete origin {{version}}
+  docker run --rm \
+  -v $(pwd):/docs \
+  -v ~/.gitconfig:/root/.gitconfig \
+  -v ~/.git-credentials:/root/.git-credentials \
+  --entrypoint mike \
+  {{image}} delete -p -f {{version}}
