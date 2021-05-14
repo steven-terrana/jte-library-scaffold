@@ -37,3 +37,38 @@ clean:
 create libName:
   mkdir -p libraries/{{libName}}/{steps,src,resources,test}
   cp resources/README.template.md libraries/{{libName}}/README.md
+
+release version: 
+  #!/usr/bin/env bash
+  # make sure release is done from main
+  branch=$(git branch --show-current)
+  if [[ ! "${branch}" == "main" ]]; then 
+    echo "You can only cut a release from the 'main' branch."
+    echo "Currently on branch '${branch}'"
+    exit 1
+  fi
+
+  # cut a release branch
+  git checkout -B release/{{version}}
+  # bump the version in relevant places
+  git commit -m "bump version to {{version}}"
+  git push --set-upstream origin release/{{version}}
+
+  # push a tag for this release
+  git tag {{version}}
+  git push origin refs/tags/{{version}}
+
+  # push the docs for this release
+  docker run --rm \
+  -v $(pwd):/docs \
+  -v ~/.gitconfig:/root/.gitconfig \
+  -v ~/.git-credentials:/root/.git-credentials \
+  --entrypoint mike \
+  {{image}} deploy --push --update-aliases {{version}} latest
+
+    docker run --rm \
+  -v $(pwd):/docs \
+  -v ~/.gitconfig:/root/.gitconfig \
+  -v ~/.git-credentials:/root/.git-credentials \
+  --entrypoint mike \
+  {{image}} set-default latest

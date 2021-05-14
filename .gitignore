@@ -2,4 +2,4 @@
 .gradle
 
 # Ignore Gradle build output directory
-site target
+site/ target/
