@@ -1,2 +1,0 @@
-# JTE Library Scaffold
-

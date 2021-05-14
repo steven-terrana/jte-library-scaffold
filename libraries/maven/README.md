@@ -1,7 +1,0 @@
-# Maven
-
-## Steps
-
-## Configuration 
-
-## Dependencies
