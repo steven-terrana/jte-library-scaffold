@@ -12,6 +12,14 @@ test class="*":
   coverage=$([[ {{coverage}} == "true" ]] && echo "jacocoTestReport" || echo "")
   ./gradlew test --tests '{{class}}' $coverage
 
+# Uses npm-groovy-lint to lint the libraries
+lint: 
+  docker run --rm \
+  -u "$(id -u):$(id -g)" \
+  -w=/tmp \
+  -v "$PWD":/tmp \
+  nvuillam/npm-groovy-lint -f "libraries/**/*.groovy" -o json
+
 # Build the docs container image
 buildImage:
   docker build resources -t {{image}}

@@ -83,3 +83,13 @@ To run tests for a specific Specification file, `test/docker/BuildSpec.groovy` f
 ``` bash
 just test "*.BuildSpec"
 ```
+
+## Linting
+
+To lint the libraries, run: 
+
+``` bash
+just lint
+```
+
+The output will go to standard out. 
