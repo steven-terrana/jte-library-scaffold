@@ -33,7 +33,7 @@ serve: buildImage build
   #!/bin/bash
   docker run --rm -it -p 8000:80 -v $(pwd)/site:/usr/share/nginx/html --name local-docs -d nginx
   trap "just clean" INT
-  watchexec --exts md just build
+  watchexec --exts md,yml just build
 
 # Cleanup the docs and target directory
 clean: 

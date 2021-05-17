@@ -1,11 +1,13 @@
-# JTE Library Scaffold
+# Home
 
 This repository serves as a scaffold to jumpstart a new set of libraries for the [Jenkins Templating Engine (JTE)](https://plugins.jenkins.io/templating-engine).
 
 It comes with some best practices baked in to help you get off on the right foot with JTE.
 
 !!! note
-    Before you dive into this repository, I would highly recommend checking out the following [JTE webinar](http://www.youtube.com/watch?v=FYLaoqn0pDE). 
+    Before jumping in, I'd recommend you familiarize yourself with JTE by watching the CDF webinar below. 
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/FYLaoqn0pDE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ## Documentation 
 

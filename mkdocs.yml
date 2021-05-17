@@ -1,9 +1,14 @@
-site_name: My Library Documentation
+site_name: JTE Library Starter
 
 theme:
   name: material
+  palette:
+    primary: teal
+  features: 
+    - navigation.instant
+    - navigation.tabs
 
-repo_url: https://github.com/steven-terrana/jte-library-scaffold.git
+repo_url: https://github.com/steven-terrana/jte-library-scaffold
 
 plugins:
   - search:
@@ -18,3 +23,5 @@ extra:
 
 markdown_extensions:
   - admonition
+  - pymdownx.tabbed
+  - pymdownx.highlight
