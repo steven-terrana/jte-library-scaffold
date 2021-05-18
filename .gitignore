@@ -9,3 +9,6 @@ bin
 # Ignore Gradle build output directory
 site/
 target/
+
+# Local Netlify folder
+.netlify
