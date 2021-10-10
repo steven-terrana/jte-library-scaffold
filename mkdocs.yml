@@ -7,6 +7,7 @@ theme:
   features: 
     - navigation.instant
     - navigation.tabs
+    - navigation.sections
 
 repo_url: https://github.com/steven-terrana/jte-library-scaffold
 
@@ -15,6 +16,7 @@ plugins:
   - gen-files:
       scripts:
         - /docs/resources/copy_docs.py
+  - pdf-export:
 
 extra:
   version:
