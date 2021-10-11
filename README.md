@@ -18,15 +18,15 @@ It comes with some best practices baked in to help you get off on the right foot
 
 This repository uses [Material for MkDocs](https://squidfunk.github.io/mkdocs-material/) as the documentation framework.
 
-| Component                   | Description                                                                                                                                                                                          |
-|-----------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Landing Page                | By default, the `README.md` at the root of this repository will become the landing page for the documentation.   This behavior is overridden if there is an `index.md` file in the `docs` directory. |
-| Contributing Page           | If present, the `CONTRIBUTING.md` is transformed into a `Contributing` page in the documentation site                                                                                                |
-| Library Documentation       | Each library should have a `README.md` that gets compiled into the documentation                                                                                                                     |
-| Miscellaneous Documentation | Any non-library specific documentation can be placed in the `docs` directory.                                                                                                                        |
+| Component                   | Description                                                                                                                                                                                        |
+|-----------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Landing Page                | By default, the `README.md` at the root of this repository will become the landing page for the documentation. This behavior is overridden if there is an `index.md` file in the `docs` directory. |
+| Contributing Page           | If present, the `CONTRIBUTING.md` is transformed into a `Contributing` page in the documentation site                                                                                              |
+| Library Documentation       | Each library should have a `README.md` that gets compiled into the documentation                                                                                                                   |
+| Miscellaneous Documentation | Any non-library specific documentation can be placed in the `docs` directory.                                                                                                                      |
 
-!!! note
-    These transformations happen by utilizing the `gen-files` plugin for MkDocs. The `resources/copy_docs.py` script performs the repository transformations for the documentation.
+These transformations happen by utilizing the `gen-files` plugin for MkDocs.
+The `resources/copy_docs.py` script performs the repository transformations for the documentation.
 
 ## Unit Tests
 
@@ -36,7 +36,7 @@ These tests should go in the `test` directory for each library.
 
 ## Linting
 
-This repository uses [npm-groovy-lint](https://github.com/nvuillam/npm-groovy-lint) with the recommended codenarc profile for Jenkins. 
+This repository uses [npm-groovy-lint](https://github.com/nvuillam/npm-groovy-lint) with the recommended codenarc profile for Jenkins.
 
 The `.groovylintrc.json` can be used to tune the rule profile.
 
