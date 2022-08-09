@@ -1,6 +1,16 @@
 plugins{
-  id 'org.jenkins-ci.jpi' version '0.43.0'
+  // used to packate these libraries as a jenkins plugin
+  id "io.jenkins.jte" version "0.2.0"
+  // used to execute unit test suite 
   id 'groovy'
+}
+
+// packaging info
+jenkinsPlugin{
+  jenkinsVersion = "2.346.2"
+  shortName = "jte-library-scaffold"
+  // will be the value in the drop down in Jenkins UI
+  displayName = "JTE Library Scaffold"
 }
 
 repositories {
@@ -14,13 +24,15 @@ repositories {
 project.buildDir = "target" 
 
 // determine test files
-
 def tests = [ "test" ]
 fileTree("libraries").visit{ FileVisitDetails details ->
   if(details.file.isDirectory() && details.file.path ==~ ".*libraries/.*/test"){
     tests << details.file.path
   }
 }
+
+// don't compile libraries
+compileGroovy.enabled = false 
 
 sourceSets{
   main{
@@ -39,19 +51,14 @@ sourceSets{
   }
 }
 
-// we don't need to compile libraries before running tests
-compileGroovy.enabled = false 
-
-jenkinsPlugin {
-  coreVersion = '2.277.4'
-}
-
 dependencies {
+    // unit test framework deps
     implementation group: 'com.homeaway.devtools.jenkins', name: 'jenkins-spock', version: '2.1.5'
     implementation group: 'javax.servlet', name: 'javax.servlet-api', version:'3.1.0'
     implementation group: 'junit', name: 'junit', version:'4.12'
     implementation group: 'org.codehaus.groovy', name: 'groovy-all', version:'2.4.11'
     implementation group: 'org.spockframework', name: 'spock-core', version:'1.1-groovy-2.4'
+
     // our plugin deps
     implementation group: 'org.jenkins-ci.plugins.workflow', name: 'workflow-step-api', version:'2.10'
     implementation group: 'org.jenkins-ci.plugins.workflow', name: 'workflow-cps', version:'2.36'

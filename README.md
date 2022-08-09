@@ -40,6 +40,10 @@ This repository uses [npm-groovy-lint](https://github.com/nvuillam/npm-groovy-li
 
 The `.groovylintrc.json` can be used to tune the rule profile.
 
+## Packaging as a Plugin
+
+Run `./gradlew jte` to package the libraries as a stand alone plugin.
+
 ## Release Automation
 
 To cut a new release, run:
