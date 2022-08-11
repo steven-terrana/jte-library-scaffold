@@ -8,9 +8,8 @@ It comes with some best practices baked in to help you get off on the right foot
 
 | Feature              | Description                                                                                          |
 |----------------------|------------------------------------------------------------------------------------------------------|
-| Docs Site            | Generate a MkDocs site to document libraries                                                         |
+| Documentation        | Generate a MkDocs site to document libraries                                                         |
 | Unit Tests           | Integrated with [Jenkins Spock](https://github.com/ExpediaGroup/jenkins-spock) for testing libraries |
-| Linting Libraries    | Integrates [npm-groovy-lint](https://github.com/nvuillam/npm-groovy-lint)                            |
 | Release Automation   | Automates publishing new versions via the Justfile                                                   |
 | Automated Changelogs | Integrates [Release Drafter](https://github.com/release-drafter/release-drafter)                     |
 
@@ -33,12 +32,6 @@ The `resources/copy_docs.py` script performs the repository transformations for 
 Unit tests can be written using [Jenkins Spock](https://github.com/ExpediaGroup/jenkins-spock).
 
 These tests should go in the `test` directory for each library.
-
-## Linting
-
-This repository uses [npm-groovy-lint](https://github.com/nvuillam/npm-groovy-lint) with the recommended codenarc profile for Jenkins.
-
-The `.groovylintrc.json` can be used to tune the rule profile.
 
 ## Packaging as a Plugin
 

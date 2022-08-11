@@ -1,3 +1,7 @@
+---
+description: 
+---
+
 # Library
 
 ## Steps
@@ -8,8 +12,8 @@
 
 ## Configuration
 
-| Libary Configuration | Type | Default Value |
-|----------------------|------|---------------|
-|                      |      |               |
+| Libary Configuration | Type | Required | Default Value |
+|----------------------|------|----------|---------------|
+|                      |      |          |               |
 
 ## Dependencies
