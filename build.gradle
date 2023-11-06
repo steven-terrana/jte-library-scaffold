@@ -1,9 +1,11 @@
 plugins{
   // used to packate these libraries as a jenkins plugin
+  // see: https://github.com/jenkinsci/gradle-jte-plugin/blob/main/README.md
   id "io.jenkins.jte" version "0.2.0"
-  // used to execute unit test suite 
-  id 'groovy'
 }
+
+// an artifact required by how Jenkins Spock is hard-coded
+project.buildDir = "target" 
 
 // packaging info
 jenkinsPlugin{
@@ -20,13 +22,11 @@ repositories {
     maven { url "https://repo.maven.apache.org/maven2" }
 }
 
-// an artifact required by how Jenkins Spock is hard-coded
-project.buildDir = "target" 
-
 // determine test files
-def tests = [ "test" ]
+def tests = [ "resources/test" ]
 fileTree("libraries").visit{ FileVisitDetails details ->
   if(details.file.isDirectory() && details.file.path ==~ ".*libraries/.*/test"){
+    println details.file.path
     tests << details.file.path
   }
 }
@@ -35,11 +35,6 @@ fileTree("libraries").visit{ FileVisitDetails details ->
 compileGroovy.enabled = false 
 
 sourceSets{
-  main{
-    groovy{
-      srcDirs = [ "libraries" ]
-    }
-  }
   test{
     output.resourcesDir("${buildDir}/test-classes")
     groovy{
@@ -50,6 +45,7 @@ sourceSets{
     }
   }
 }
+
 
 dependencies {
     // unit test framework deps
@@ -71,5 +67,5 @@ dependencies {
     implementation group: "org.jenkins-ci.plugins", name: "credentials-binding", version: "1.16"
 
     //our plugin
-    implementation group: 'org.jenkins-ci.plugins', name: "templating-engine", version: "2.2.2"
+    implementation group: 'org.jenkins-ci.plugins', name: "templating-engine", version: "2.5.3"
  }

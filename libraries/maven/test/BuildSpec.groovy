@@ -2,7 +2,7 @@ import org.junit.*
 import spock.lang.*
 import com.homeaway.devtools.jenkins.testing.JenkinsPipelineSpecification
 
-public class BuildSpec extends JenkinsPipelineSpecification{
+public class BuildSpec extends JTEPipelineSpecification{
 
   def build 
 
