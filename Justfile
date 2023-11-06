@@ -29,16 +29,11 @@ build:
   docker run --rm -v $(pwd):/docs {{image}} build
 
 # Live reloading of the documentation
-serve: buildImage build
-  #!/bin/bash
-  docker run --rm -it -p 8000:80 -v $(pwd)/site:/usr/share/nginx/html --name local-docs -d nginx
-  trap "just clean" INT
-  watchexec --exts md,yml just build
+serve: buildImage
+  docker run --rm -p 8000:8000 -v $(pwd):/docs {{image}} serve -a 0.0.0.0:8000 --watch-theme
 
 # Cleanup the docs and target directory
 clean: 
-  docker rm -f local-docs
-  rm -f site
   ./gradlew clean
 
 # Create a library

@@ -1,35 +1,45 @@
 # Home
 
-This repository serves as a scaffold to jumpstart a new set of libraries for the [Jenkins Templating Engine (JTE)](https://plugins.jenkins.io/templating-engine).
+This repository serves as a scaffold to jumpstart a new set of libraries for the [Jenkins Templating Engine (JTE)](https://jenkinsci.github.io/templating-engine-plugin).
 
 It comes with some best practices baked in to help you get off on the right foot with JTE.
 
-!!! note
-    Before jumping in, I'd recommend you familiarize yourself with JTE by watching the CDF webinar below. 
+## Features
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/FYLaoqn0pDE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+| Feature              | Description                                                                                          |
+|----------------------|------------------------------------------------------------------------------------------------------|
+| Documentation        | Generate a MkDocs site to document libraries                                                         |
+| Unit Tests           | Integrated with [Jenkins Spock](https://github.com/ExpediaGroup/jenkins-spock) for testing libraries |
+| Release Automation   | Automates publishing new versions via the Justfile                                                   |
+| Automated Changelogs | Integrates [Release Drafter](https://github.com/release-drafter/release-drafter)                     |
 
-## Documentation 
+## Documentation
 
 This repository uses [Material for MkDocs](https://squidfunk.github.io/mkdocs-material/) as the documentation framework.
 
-| Component                   | Description                                                                                                                                                                                          |
-|-----------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Landing Page                | By default, the `README.md` at the root of this repository will become the landing page for the documentation.   This behavior is overridden if there is an `index.md` file in the `docs` directory. |
-| Contributing Page           | If present, the `CONTRIBUTING.md` is transformed into a `Contributing` page in the documentation site                                                                                                |
-| Library Documentation       | Each library should have a `README.md` that gets compiled into the documentation                                                                                                                     |
-| Miscellaneous Documentation | Any non-library specific documentation can be placed in the `docs` directory.                                                                                                                        |
+| Component                   | Description                                                                                                                                                                                        |
+|-----------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Landing Page                | By default, the `README.md` at the root of this repository will become the landing page for the documentation. This behavior is overridden if there is an `index.md` file in the `docs` directory. |
+| Contributing Page           | If present, the `CONTRIBUTING.md` is transformed into a `Contributing` page in the documentation site                                                                                              |
+| Library Documentation       | Each library should have a `README.md` that gets compiled into the documentation                                                                                                                   |
+| Miscellaneous Documentation | Any non-library specific documentation can be placed in the `docs` directory.                                                                                                                      |
 
-!!! note
-    These transformations happen by utilizing the `gen-files` plugin for MkDocs. The `resources/copy_docs.py` script performs the repository transformations for the documentation.
+These transformations happen by utilizing the `gen-files` plugin for MkDocs.
+The `resources/copy_docs.py` script performs the repository transformations for the documentation.
 
-## Release Management
+## Unit Tests
 
-This repository automates the create of release branches and tags as well as publishing the documentation for each version.
+Unit tests can be written using [Jenkins Spock](https://github.com/ExpediaGroup/jenkins-spock).
 
-### Release Automation
+These tests should go in the `test` directory for each library.
 
-To cut a new release, run: 
+## Packaging as a Plugin
+
+Run `./gradlew jte` to package the libraries as a stand alone plugin.
+
+## Release Automation
+
+To cut a new release, run:
 
 ``` bash
 just release $version
@@ -41,21 +51,8 @@ Which will:
 2. create a `$version` tag
 3. publish the documentation for the version and upate the `latest` documentation alias
 
-
-### Automated Changelogs
+## Automated Changelogs
 
 [Release Drafter](https://github.com/release-drafter/release-drafter) is used to automate release note updates as Pull Requests are opened to `main`. 
 
 The configuration for Release Drafter exists in the `.github/release-drafter.yml` file and uses GitHub Actions. 
-
-## Unit Tests
-
-Unit tests can be written using [Jenkins Spock](https://github.com/ExpediaGroup/jenkins-spock).
-
-These tests should go in the `test` directory for each library.
-
-## Linting
-
-This repository uses [npm-groovy-lint](https://github.com/nvuillam/npm-groovy-lint) with the recommended codenarc profile for Jenkins. 
-
-The `.groovylintrc.json` can be used to tune the rule profile. 

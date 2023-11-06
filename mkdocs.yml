@@ -7,8 +7,13 @@ theme:
   features: 
     - navigation.instant
     - navigation.tabs
+    - navigation.sections
+    - navigation.indexes
 
 repo_url: https://github.com/steven-terrana/jte-library-scaffold
+
+watch:
+- libraries
 
 plugins:
   - search:
